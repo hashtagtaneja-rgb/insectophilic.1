@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Species Atlas | Wildlife</title>
+    <link rel="stylesheet" href="/style2.css">
+    <!-- <link rel="stylesheet" href="CSS/utils2.css"> -->
+    <!-- <link rel="stylesheet" href="CSS/response2.css"> -->
+
+    <style>
+        .search-area {
+            display: grid;
+            gap: 5px;
+            width: min(350px, 32vw);
+        }
+
+        .search-area .search {
+            width: 100%;
+        }
+
+        .search-status {
+            margin: 0;
+            color: #e8f0e2;
+            font-size: .8rem;
+            line-height: 1.35;
+        }
+
+        .card-item[hidden],
+        section.card[hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 700px) {
+            .search-area {
+                width: min(100%, 420px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a class="brand-lockup" href="#top" aria-label="Insectophilic Species Atlas home">
+                    <span class="brand-mark" aria-hidden="true"></span>
+                    <span class="brand-wordmark">
+                        <span class="brand-name">Insectophilic</span>
+                        <span class="brand-tagline">SPECIES ATLAS</span>
+                    </span>
+                </a>
+            </div>
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li> <a href="contacts.html">Contact</a></li>
+            </ul>
+            <div class="search-area">
+                <form class="search" id="species-search" role="search">
+                    <input type="search" id="species-query" placeholder="Search species..." aria-label="Search species"
+                        autocomplete="off">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+                <p class="search-status" id="search-status" role="status" aria-live="polite" hidden></p>
+            </div>
+        </nav>
+        <div class="atlas-intro">
+            <div class="atlas-intro-inner">
+                <p class="atlas-kicker">A field guide to the natural world</p>
+                <h1>Discover the little wonders of wildlife</h1>
+                <p>Explore butterflies, beetles, spiders, carnivorous plants, ants, and snakes. Meet remarkable species
+                    and learn what makes each one unique.</p>
+            </div>
+        </div>
+        <div class="atlas-links" aria-label="Species categories">
+            <div class="atlas-links-inner">
+                <span class="atlas-links-label">Explore:</span>
+                <a href="#butterflies">Butterflies</a>
+                <a href="#beetles">Beetles</a>
+                <a href="#spiders">Spiders</a>
+                <a href="#carnivorous-plants">Carnivorous plants</a>
+                <a href="#ants">Ants</a>
+                <a href="#snakes">Snakes</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="slides-carousel">
+                <button class="slide-button slide-previous" type="button"
+                    aria-label="Show previous image">&#8249;</button>
+                <div class="slides" id="wildlife-slides" aria-label="Featured species" aria-roledescription="carousel">
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/960px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg"
+                            alt="Monarch butterfly" loading="lazy" decoding="async">
+                        <figcaption>Butterflies</figcaption>
+                    </figure>
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Dynastes_hercules_ecuatorianus_MHNT.jpg/960px-Dynastes_hercules_ecuatorianus_MHNT.jpg"
+                            alt="Hercules beetle" loading="lazy" decoding="async">
+                        <figcaption>Beetles</figcaption>
+                    </figure>
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg"
+                            alt="Orb-weaver spider" loading="lazy" decoding="async">
+                        <figcaption>Spiders</figcaption>
+                    </figure>
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Venus_Flytrap_showing_trigger_hairs.jpg/960px-Venus_Flytrap_showing_trigger_hairs.jpg"
+                            alt="Venus flytrap" loading="lazy" decoding="async">
+                        <figcaption>Carnivorous plants</figcaption>
+                    </figure>
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Atta_cephalotes-pjt.jpg/960px-Atta_cephalotes-pjt.jpg"
+                            alt="Leafcutter ant" loading="lazy" decoding="async">
+                        <figcaption>Ants</figcaption>
+                    </figure>
+                    <figure class="slider">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg/960px-12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg"
+                            alt="King cobra" loading="lazy" decoding="async">
+                        <figcaption>Snakes</figcaption>
+                    </figure>
+                </div>
+                <button class="slide-button slide-next" type="button" aria-label="Show next image">&#8250;</button>
+                <p class="slide-position" aria-live="polite"></p>
+            </div>
+            <section class="card" id="butterflies" aria-label="Butterflies">
+                <hr>
+                <h2 class="my2">Butterflies</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a class="lul" href="https://en.wikipedia.org/wiki/Monarch_butterfly">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/960px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg"
+                                alt="Monarch butterfly" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Monarch butterfly</p>
+                                <p class="textcenter my1">Danaus plexippus ? famous for its long migration.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a class="lul" href="https://en.wikipedia.org/wiki/Aglais_io">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Peacock_butterfly_%28Aglais_io%29_2.jpg/960px-Peacock_butterfly_%28Aglais_io%29_2.jpg"
+                                alt="Peacock butterfly" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Peacock butterfly</p>
+                                <p class="textcenter my1">Aglais io ? recognized by its vivid eye-spots.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Gonepteryx_rhamni" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male.jpg/960px-Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male.jpg"
+                                alt="Brimstone butterfly" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Brimstone butterfly</p>
+                                <p class="textcenter my1">Gonepteryx rhamni ? a bright yellow European butterfly.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Swallowtail_butterfly" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Papilio_machaon_Mitterbach_01.jpg/960px-Papilio_machaon_Mitterbach_01.jpg"
+                                alt="Swallowtail butterfly" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Swallowtail butterfly</p>
+                                <p class="textcenter my1">Papilio machaon ? a large butterfly with tail-like wings.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Leptotes_cassius" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Cassius_blue_%28Leptotes_cassius_theonus%29_underside.JPG/960px-Cassius_blue_%28Leptotes_cassius_theonus%29_underside.JPG"
+                                alt="Cassius blue" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Cassius blue</p>
+                                <p class="textcenter my1">Leptotes cassius ? a tiny butterfly in the blues family.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Charaxes" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Charaxes_brutus_natalensis.jpg/960px-Charaxes_brutus_natalensis.jpg"
+                                alt="African charaxes" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">African charaxes</p>
+                                <p class="textcenter my1">Charaxes brutus natalensis ? a fast-flying African species.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Vanessa_atalanta" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/VanessaAtalanta_Closeup.jpg/960px-VanessaAtalanta_Closeup.jpg"
+                                alt="Red admiral" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Red admiral</p>
+                                <p class="textcenter my1">Vanessa atalanta - a striking migratory butterfly.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Vanessa_cardui" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/0_Belle-dame_%28Vanessa_cardui%29_-_Echinacea_purpurea_-_Havr%C3%A9_%283%29.jpg/960px-0_Belle-dame_%28Vanessa_cardui%29_-_Echinacea_purpurea_-_Havr%C3%A9_%283%29.jpg"
+                                alt="Painted lady" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Painted lady</p>
+                                <p class="textcenter my1">Vanessa cardui - found across a remarkably wide range.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Morpho_menelaus" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Blue_Morpho_Butterfly_at_University_of_Florida.jpg/960px-Blue_Morpho_Butterfly_at_University_of_Florida.jpg"
+                                alt="Blue morpho" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Blue morpho</p>
+                                <p class="textcenter my1">Morpho peleides - known for brilliant iridescent blue wings.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Heliconius_charithonia" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Heliconius_charithonia_2021.jpg/960px-Heliconius_charithonia_2021.jpg"
+                                alt="Zebra longwing" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Zebra longwing</p>
+                                <p class="textcenter my1">Heliconius charithonia - Florida state butterfly.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Anthocharis_cardamines" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Orange_tip_%28Anthocharis_cardamines%29_male_Geiranger.jpg/960px-Orange_tip_%28Anthocharis_cardamines%29_male_Geiranger.jpg"
+                                alt="Orange-tip" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Orange-tip</p>
+                                <p class="textcenter my1">Anthocharis cardamines - males have bright orange wing tips.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Junonia_coenia" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Common_buckeye_%2835663%29.jpg/960px-Common_buckeye_%2835663%29.jpg"
+                                alt="Common buckeye" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Common buckeye</p>
+                                <p class="textcenter my1">Junonia coenia - recognizable by its large eyespots.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="card" id="beetles" aria-label="Beetles">
+                <hr>
+                <h2 class="my2">Beetles</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Stag_beetle" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Golden_stag_beetle.jpg/960px-Golden_stag_beetle.jpg"
+                                alt="Stag beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Stag beetle</p>
+                                <p class="textcenter my1">Lucanus cervus ? males have enlarged antler-like jaws.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Hercules_beetle" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Dynastes_hercules_ecuatorianus_MHNT.jpg/960px-Dynastes_hercules_ecuatorianus_MHNT.jpg"
+                                alt="Hercules beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Hercules beetle</p>
+                                <p class="textcenter my1">Dynastes hercules ? one of the largest beetles.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Dung_beetle" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Scarabaeus_viettei_01.jpg/960px-Scarabaeus_viettei_01.jpg"
+                                alt="Dung beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Dung beetle</p>
+                                <p class="textcenter my1">Scarabaeus viettei ? helps recycle nutrients in ecosystems.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Bombardier_beetle" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Brachinus_spPCCA20060328-2821B.jpg"
+                                alt="Bombardier beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Bombardier beetle</p>
+                                <p class="textcenter my1">Brachinus species ? known for its defensive spray.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Colorado_potato_beetle" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Colorado_potato_beetle.jpg/960px-Colorado_potato_beetle.jpg"
+                                alt="Colorado potato beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Colorado potato beetle</p>
+                                <p class="textcenter my1">Leptinotarsa decemlineata ? a striped leaf beetle.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Japanese_beetle" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Popillia_japonica.jpg/960px-Popillia_japonica.jpg"
+                                alt="Japanese beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Japanese beetle</p>
+                                <p class="textcenter my1">Popillia japonica ? metallic green and copper in color.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Goliathus" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Goliathus_goliatus_vol.jpg/960px-Goliathus_goliatus_vol.jpg"
+                                alt="Goliath beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Goliath beetle</p>
+                                <p class="textcenter my1">Goliathus goliatus - one of the heaviest beetles.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Coccinella_septempunctata" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg/960px-7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg"
+                                alt="Seven-spot ladybird" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Seven-spot ladybird</p>
+                                <p class="textcenter my1">Coccinella septempunctata - a familiar garden beetle.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Charidotella_sexpunctata" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Golden_Tortoise_Beetle_-_Charidotella_sexpunctata.jpg"
+                                alt="Golden tortoise beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Golden tortoise beetle</p>
+                                <p class="textcenter my1">Charidotella sexpunctata - its shell can appear metallic gold.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Buprestidae" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Jewel_beetle_%28Chrysochroa_fulminans%29%2C_Mindanao%2C_Philippines_03.jpg/960px-Jewel_beetle_%28Chrysochroa_fulminans%29%2C_Mindanao%2C_Philippines_03.jpg"
+                                alt="Jewel beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Jewel beetle</p>
+                                <p class="textcenter my1">Chrysochroa fulminans - a brilliantly colored jewel beetle.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Firefly" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Photinus_pyralis_Firefly_3.jpg/960px-Photinus_pyralis_Firefly_3.jpg"
+                                alt="Firefly" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Firefly</p>
+                                <p class="textcenter my1">Photinus pyralis - a bioluminescent beetle.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Dynastes_tityus" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Dynastes_tityus_SC.jpg/960px-Dynastes_tityus_SC.jpg"
+                                alt="Eastern Hercules beetle" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Eastern Hercules beetle</p>
+                                <p class="textcenter my1">Dynastes tityus - a North American rhinoceros beetle.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="card" id="spiders" aria-label="Spiders">
+                <hr>
+                <h2 class="my2">Spiders</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Redback_spider" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Latrodectus_hasselti_close.jpg/960px-Latrodectus_hasselti_close.jpg"
+                                alt="Redback spider" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Redback spider</p>
+                                <p class="textcenter my1">Latrodectus hasselti ? an Australian spider in the widow
+                                    family.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Goliath_birdeater" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Theraphosa_blondi_MHNT.jpg/960px-Theraphosa_blondi_MHNT.jpg"
+                                alt="Goliath birdeater" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Goliath birdeater</p>
+                                <p class="textcenter my1">Theraphosa blondi ? a large South American tarantula.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Jumping_spider" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/PlatycryptusUndatusFemale.jpg/960px-PlatycryptusUndatusFemale.jpg"
+                                alt="Jumping spider" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Jumping spider</p>
+                                <p class="textcenter my1">Platycryptus undatus ? an agile hunter with excellent vision.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Cobalt_blue_tarantula" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Haplopelma_lividum%2C_Cobalt_blue_tarantula_cropped.jpg/960px-Haplopelma_lividum%2C_Cobalt_blue_tarantula_cropped.jpg"
+                                alt="Cobalt blue tarantula" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Cobalt blue tarantula</p>
+                                <p class="textcenter my1">Haplopelma lividum ? a vivid blue Southeast Asian tarantula.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Orb-weaver_spider" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg"
+                                alt="Orb-weaver spider" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Orb-weaver spider</p>
+                                <p class="textcenter my1">Araneus diadematus ? builds a distinctive circular web.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Wolf_spider" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Wolf_spider_tunnel.jpg"
+                                alt="Wolf spider" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Wolf spider</p>
+                                <p class="textcenter my1">Lycosidae ? a ground-hunting spider that does not rely on a
+                                    web to
+                                    catch prey.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="card" id="carnivorous-plants" aria-label="Carnivorous plants">
+                <hr>
+                <h2 class="my2">Carnivorous plants</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Venus_flytrap" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Venus_Flytrap_showing_trigger_hairs.jpg/960px-Venus_Flytrap_showing_trigger_hairs.jpg"
+                                alt="Venus flytrap" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Venus flytrap</p>
+                                <p class="textcenter my1">Dionaea muscipula ? closes its leaves around small prey.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Drosera_capensis" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Drosera_capensis_bend.JPG"
+                                alt="Cape sundew" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Cape sundew</p>
+                                <p class="textcenter my1">Drosera capensis ? catches insects on sticky leaf tentacles.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Drosera_rotundifolia" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Drosera_rotundifolia_Ohio.jpg/960px-Drosera_rotundifolia_Ohio.jpg"
+                                alt="Round-leaved sundew" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Round-leaved sundew</p>
+                                <p class="textcenter my1">Drosera rotundifolia ? a small bog plant with glistening
+                                    traps.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Sarracenia" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Sarracenia_ne1.JPG/960px-Sarracenia_ne1.JPG"
+                                alt="Sarracenia pitcher plant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Sarracenia pitcher plant</p>
+                                <p class="textcenter my1">Sarracenia ? uses pitcher-shaped leaves to trap insects.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Nepenthes_rajah" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Nepenthes_rajah.png/960px-Nepenthes_rajah.png"
+                                alt="Nepenthes rajah" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Nepenthes rajah</p>
+                                <p class="textcenter my1">Nepenthes rajah ? a tropical pitcher plant from Borneo.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Darlingtonia_californica" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Darlingtonia_californica_ne1.JPG/960px-Darlingtonia_californica_ne1.JPG"
+                                alt="Cobra lily" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Cobra lily</p>
+                                <p class="textcenter my1">Darlingtonia californica ? its hooded leaves resemble a cobra.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Pinguicula_vulgaris" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Pinguicula_vulgaris_flower_%28front_view%29_-_Keila.jpg/960px-Pinguicula_vulgaris_flower_%28front_view%29_-_Keila.jpg"
+                                alt="Common butterwort" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Common butterwort</p>
+                                <p class="textcenter my1">Pinguicula vulgaris ? captures tiny insects on sticky leaves.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="card" id="ants" aria-label="Ants">
+                <hr>
+                <h2 class="my2">Ants</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Leafcutter_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Atta_cephalotes-pjt.jpg/960px-Atta_cephalotes-pjt.jpg"
+                                alt="Leafcutter ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Leafcutter ant</p>
+                                <p class="textcenter my1">Atta cephalotes ? carries leaf pieces to grow its food fungus.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Carpenter_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Carpenter_ant_Tanzania_crop.jpg/960px-Carpenter_ant_Tanzania_crop.jpg"
+                                alt="Carpenter ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Carpenter ant</p>
+                                <p class="textcenter my1">Camponotus species ? nests in wood rather than eating it.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Weaver_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Red_Weaver_Ant%2C_Oecophylla_smaragdina.jpg/960px-Red_Weaver_Ant%2C_Oecophylla_smaragdina.jpg"
+                                alt="Red weaver ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Red weaver ant</p>
+                                <p class="textcenter my1">Oecophylla smaragdina ? joins leaves to build its nest.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Fire_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Fire_ants.jpg/960px-Fire_ants.jpg"
+                                alt="Fire ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Fire ant</p>
+                                <p class="textcenter my1">Solenopsis species ? forms large, organized colonies.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Black_garden_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Black_Garden_Ant_tending_Citrus_Mealybug_%2816063538972%29.jpg/960px-Black_Garden_Ant_tending_Citrus_Mealybug_%2816063538972%29.jpg"
+                                alt="Black garden ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Black garden ant</p>
+                                <p class="textcenter my1">Lasius niger ? a familiar ant across much of Europe.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Pharaoh_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Monomorium_pharaonis_casent0173986_profile_1.jpg/960px-Monomorium_pharaonis_casent0173986_profile_1.jpg"
+                                alt="Pharaoh ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Pharaoh ant</p>
+                                <p class="textcenter my1">Monomorium pharaonis ? a tiny ant with a widespread
+                                    distribution.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Army_ant" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Safari_ants_tunnel.jpg"
+                                alt="Army ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Army ant</p>
+                                <p class="textcenter my1">Dorylus species ? travels in large, coordinated groups.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Argentine_ant" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Linepithema_Argentine_ant.jpg"
+                                alt="Argentine ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Argentine ant</p>
+                                <p class="textcenter my1">Linepithema humile - forms extensive cooperative colonies.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Paraponera_clavata" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Paraponera_clavata.jpg/960px-Paraponera_clavata.jpg"
+                                alt="Bullet ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Bullet ant</p>
+                                <p class="textcenter my1">Paraponera clavata - a large ant of Central and South American
+                                    forests.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Odontomachus" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Odontomachus_monticola.jpg/960px-Odontomachus_monticola.jpg"
+                                alt="Trap-jaw ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Trap-jaw ant</p>
+                                <p class="textcenter my1">Odontomachus - snaps its jaws shut at extraordinary speed.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Honeypot_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/HoneyAnt.jpg/960px-HoneyAnt.jpg"
+                                alt="Honeypot ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Honeypot ant</p>
+                                <p class="textcenter my1">Myrmecocystus - some workers store liquid food for the colony.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Red_harvester_ant" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Pogonomyrmex_barbatus_casent0006306_profile_1.jpg/960px-Pogonomyrmex_barbatus_casent0006306_profile_1.jpg"
+                                alt="Red harvester ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Red harvester ant</p>
+                                <p class="textcenter my1">Pogonomyrmex barbatus - collects and stores seeds.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Crematogaster" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Crematogaster_hespera_casent0005669_profile_1.jpg/960px-Crematogaster_hespera_casent0005669_profile_1.jpg"
+                                alt="Acrobat ant" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Acrobat ant</p>
+                                <p class="textcenter my1">Crematogaster - raises its abdomen when disturbed.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="card" id="snakes" aria-label="Snakes">
+                <hr>
+                <h2 class="my2">Snakes</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/King_cobra" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg/960px-12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg"
+                                alt="King cobra" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">King cobra</p>
+                                <p class="textcenter my1">Ophiophagus hannah ? the world?s longest venomous snake.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/King_cobra" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Ball_python_lucy.JPG/960px-Ball_python_lucy.JPG"
+                                alt="Ball python" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Ball python</p>
+                                <p class="textcenter my1">Python regius ? curls into a ball when feeling threatened.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Green_tree_python" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/M._viridis.jpg/960px-M._viridis.jpg"
+                                alt="Green tree python" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Green tree python</p>
+                                <p class="textcenter my1">Morelia viridis ? rests coiled among branches.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Corn_snake" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/CornSnake.jpg/960px-CornSnake.jpg"
+                                alt="Corn snake" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Corn snake</p>
+                                <p class="textcenter my1">Pantherophis guttatus ? a nonvenomous North American snake.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Reticulated_python" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Python_reticulatus_%D1%81%D0%B5%D1%82%D1%87%D0%B0%D1%82%D1%8B%D0%B9_%D0%BF%D0%B8%D1%82%D0%BE%D0%BD-2.jpg/960px-Python_reticulatus_%D1%81%D0%B5%D1%82%D1%87%D0%B0%D1%82%D1%8B%D0%B9_%D0%BF%D0%B8%D1%82%D0%BE%D0%BD-2.jpg"
+                                alt="Reticulated python" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Reticulated python</p>
+                                <p class="textcenter my1">Malayopython reticulatus ? named for its intricate pattern.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Western_hognose_snake" class="lul">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Heterodon_nasicus.jpg"
+                                alt="Western hognose snake" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Western hognose snake</p>
+                                <p class="textcenter my1">Heterodon nasicus ? known for its upturned snout.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-item">
+                        <a href="https://en.wikipedia.org/wiki/Gaboon_viper" class="lul">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Bitis_gabonica.jpg/960px-Bitis_gabonica.jpg"
+                                alt="Gaboon viper" loading="lazy" decoding="async">
+                            <div class="lines">
+                                <p class="textcenter my1">Gaboon viper</p>
+                                <p class="textcenter my1">Bitis gabonica ? a forest viper with remarkable camouflage.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="atlas-footer">
+        <div class="atlas-footer-inner">
+            <div class="atlas-footer-grid">
+                <section class="atlas-footer-about" aria-label="About Species Atlas">
+                    <h2>Species Atlas</h2>
+                    <p>A friendly starting point for exploring the diversity of life. Take a closer look, stay curious,
+                        and help protect the habitats all species depend on.</p>
+                </section>
+                <nav aria-label="Explore species">
+                    <h3>Explore species</h3>
+                    <ul>
+                        <li><a href="#butterflies">Butterflies</a></li>
+                        <li><a href="#beetles">Beetles</a></li>
+                        <li><a href="#spiders">Spiders</a></li>
+                        <li><a href="#carnivorous-plants">Carnivorous plants</a></li>
+                        <li><a href="#ants">Ants</a></li>
+                        <li><a href="#snakes">Snakes</a></li>
+                    </ul>
+                </nav>
+                <section aria-label="Wildlife care">
+                    <h3>Care for nature</h3>
+                    <p>Observe wildlife responsibly: admire animals and plants in their natural homes, avoid disturbing
+                        them, and leave habitats as you found them.</p>
+                </section>
+            </div>
+            <div class="atlas-footer-bottom">Copyright &copy; | All rights reserved | Since 1989</div>
+        </div>
+    </footer>
+    <script>
+        (() => {
+            const track = document.getElementById("wildlife-slides");
+            const previous = document.querySelector(".slide-previous");
+            const next = document.querySelector(".slide-next");
+            const position = document.querySelector(".slide-position");
+            const slides = Array.from(track.querySelectorAll(".slider"));
+
+            function updatePosition() {
+                const center = track.scrollLeft + track.clientWidth / 2;
+                let active = 0;
+                slides.forEach((slide, index) => {
+                    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                    if (Math.abs(slideCenter - center) < Math.abs(slides[active].offsetLeft + slides[active].offsetWidth / 2 - center)) {
+                        active = index;
+                    }
+                });
+                position.textContent = `${active + 1} / ${slides.length}`;
+            }
+
+            function move(direction) {
+                const center = track.scrollLeft + track.clientWidth / 2;
+                let active = 0;
+                slides.forEach((slide, index) => {
+                    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                    if (Math.abs(slideCenter - center) < Math.abs(slides[active].offsetLeft + slides[active].offsetWidth / 2 - center)) {
+                        active = index;
+                    }
+                });
+                const target = (active + direction + slides.length) % slides.length;
+                track.scrollTo({ left: slides[target].offsetLeft - (track.clientWidth - slides[target].offsetWidth) / 2, behavior: "smooth" });
+            }
+
+            previous.addEventListener("click", () => move(-1));
+            next.addEventListener("click", () => move(1));
+            track.addEventListener("scroll", updatePosition, { passive: true });
+            window.addEventListener("resize", updatePosition);
+            updatePosition();
+        })();
+    </script>
+    <script>
+        (() => {
+            const form = document.getElementById("species-search");
+            const input = document.getElementById("species-query");
+            const status = document.getElementById("search-status");
+            const sections = document.querySelectorAll("main section.card");
+
+            function searchSpecies() {
+                const query = input.value.trim().toLocaleLowerCase();
+                let totalMatches = 0;
+
+                sections.forEach((section) => {
+                    let sectionMatches = 0;
+                    section.querySelectorAll(".card-item").forEach((card) => {
+                        const matches = query === "" || card.textContent.toLocaleLowerCase().includes(query);
+                        card.hidden = !matches;
+                        if (matches) sectionMatches++;
+                    });
+                    section.hidden = sectionMatches === 0;
+                    totalMatches += sectionMatches;
+                });
+
+                status.hidden = query === "";
+                if (query !== "") {
+                    status.textContent = totalMatches === 1
+                        ? "1 species found."
+                        : `${totalMatches} species found.`;
+                    if (totalMatches === 0) {
+                        status.textContent = `No species found for "${input.value.trim()}".`;
+                    }
+                }
+            }
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                searchSpecies();
+            });
+            input.addEventListener("input", searchSpecies);
+        })();
+    </script>
+</body>
+
+</html>
